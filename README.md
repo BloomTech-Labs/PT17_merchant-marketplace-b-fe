@@ -1,5 +1,6 @@
 # merchant-marketplace
 
+![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/704cb50ee8290b5b257f/maintainability)](https://codeclimate.com/repos/607777263eecca014c0091cd/maintainability)
 
 🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your first Pull-Request is merged. This is intended to be a guideline. Feel free to add your own flare to it.
