@@ -28,6 +28,8 @@ import EditInfo from './components/sellerPages/profile/dashboard/edit/EditInfo.j
 import CurrentInventory from './components/sellerPages/inventory/current';
 import { ProductPage } from './components/pages/ProductPage';
 import { TestItemImageUpload } from './components/common';
+import Drafts from './components/sellerPages/inventory/current/Drafts';
+import PublishedInventory from './components/sellerPages/inventory/current/PublishedInventory';
 
 const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
@@ -63,6 +65,16 @@ function App() {
         <SecureRoute exact path="/myprofile" component={SellerProfile} />
         <SecureRoute
           exact
+          path="/myprofile/inventory/published-inventory"
+          component={PublishedInventory}
+        />
+        <SecureRoute
+          exact
+          path="/myprofile/inventory/drafts"
+          component={Drafts}
+        />
+        <SecureRoute
+          exact
           path="/myprofile/inventory"
           component={CurrentInventory}
         />
@@ -71,6 +83,7 @@ function App() {
           path="/myprofile/inventory/additem"
           component={Inventory}
         />
+
         <SecureRoute exact path="/myprofile/myinfo" component={MyInfo} />
         <SecureRoute exact path="/myprofile/editinfo" component={EditInfo} />
         <SecureRoute

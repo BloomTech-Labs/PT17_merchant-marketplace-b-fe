@@ -8,10 +8,11 @@ import {
   fetchTags,
 } from '../../../../state/actions';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 import NavBar from '../../../common/navBar';
 import SearchResults from './searchResults';
 import useSearch from '../../../common/customHooks/useSearch';
+import InventoryDisplay from './InventoryDisplay';
 
 function CurrentInventory({
   state,
@@ -34,6 +35,33 @@ function CurrentInventory({
 
   const displayedData = useSearch(inventory, 'item_name', searchData);
 
+  const [data, setData] = useState([]);
+
+  const getAuthHeader = authState => {
+    console.log(authState);
+    if (authState.isAuthenticated) {
+      return { Authorization: `Bearer ${authState.idToken}` };
+    } else {
+      throw new Error('Not authenticated');
+    }
+    localStorage.setItem('token', `${authState.idToken}`);
+  };
+  const token = localStorage.getItem('token');
+
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+  useEffect(() => {
+    axios
+      .get('https://merchant-marketplace-b-api.herokuapp.com/item', {
+        headers: headers,
+      })
+      .then(res => {
+        setData(res.data);
+      })
+      .catch(err => err);
+  }, []);
+  const getData = () => {};
   return (
     <>
       <NavBar searchVisible={false} setData={setSearchData} />
@@ -41,8 +69,24 @@ function CurrentInventory({
         <div className="contents">
           <SearchResults data={displayedData} filter={searchData} />
           <Link to="/myprofile/inventory/additem">
-            <Button>+Add Item</Button>
+            <Button style={{ background: '#8ac4d0', color: 'white' }}>
+              +Add Item
+            </Button>
           </Link>
+        </div>
+
+        <div className="inv-display-box">
+          {data.map(item => (
+            <InventoryDisplay
+              key={item.id}
+              id={item.id}
+              item_name={item.item_name}
+              description={item.description}
+              price_in_cents={item.price_in_cents / 100}
+              quantity_available={item.quantity_available}
+              published={item.published}
+            />
+          ))}
         </div>
       </div>
     </>

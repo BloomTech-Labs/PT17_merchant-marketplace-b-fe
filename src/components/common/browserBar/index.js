@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input, Form, Button } from 'antd';
 import { AimOutlined, SearchOutlined } from '@ant-design/icons';
 import './BrowserBar.css';
@@ -11,6 +11,7 @@ function BrowserBar() {
   const submitHandler = () => {
     console.log('hi');
   };
+
   return (
     <Form className="search-bar" onFinish={submitHandler}>
       <div className="location">

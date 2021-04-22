@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Input, Button, Select } from 'antd';
 import { Link } from 'react-router-dom';
 import './searchbarStyles.css';
+import TestProductGet from './TestProductGet';
 
 function SearchBar({ searchVisible, setData }) {
   const [inView, setInView] = useState('nope');
@@ -41,8 +42,16 @@ function SearchBar({ searchVisible, setData }) {
       <div className="searchOuter">
         <div className="searchBtns">
           <Button onClick={mainChange}>Main</Button>
-          <Button onClick={publishedChange}>Published</Button>
-          <Button onClick={unPublishedChange}>Drafts</Button>
+          {/* adding a link to another component 
+          to display published inventory only */}
+          <Link to="/myprofile/inventory/published-inventory">
+            <Button>Published</Button>
+          </Link>
+          {/* adding a link to another component 
+          to display drafts only */}
+          <Link to="/myprofile/inventory/drafts">
+            <Button>Drafts</Button>
+          </Link>
           <Button>Archives</Button>
         </div>
         <div className="searchBtns"></div>

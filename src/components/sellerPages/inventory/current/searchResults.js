@@ -8,29 +8,31 @@ const LazyItemCard = lazy(() => import('../../../common/cards/normalItem'));
 function SearchResults({ data, filter }) {
   const searchData = useSearch(data, 'item_name', filter);
   return (
-    <div>
-      {searchData.map(item => (
-        <NavLink
-          to={`/myprofile/inventory/productpage/${item.id}`}
-          key={item.id}
-        >
-          {/**---------------------------------------- */}
-          <Suspense fallback={<LoadingProductCard />}>
-            <LazyItemCard
-              id={item.id}
-              key={item.id}
-              name={item.item_name}
-              price={item.price_in_cents}
-              description={item.description}
-              count={item.quantity_available}
-              image={item.id}
-              published={item.published}
-            />
-          </Suspense>
-          {/**---------------------------------------- */}
-        </NavLink>
-      ))}
-    </div>
+    // commented out the map function to bypass
+    <></>
+    // <div>
+    //   {searchData.map(item => (
+    //     <NavLink
+    //       to={`/myprofile/inventory/productpage/${item.id}`}
+    //       key={item.id}
+    //     >
+    //       {/**---------------------------------------- */}
+    //       <Suspense fallback={<LoadingProductCard />}>
+    //         <LazyItemCard
+    //           id={item.id}
+    //           key={item.id}
+    //           name={item.item_name}
+    //           price={item.price_in_cents}
+    //           description={item.description}
+    //           count={item.quantity_available}
+    //           image={item.id}
+    //           published={item.published}
+    //         />
+    //       </Suspense>
+    //       {/**---------------------------------------- */}
+    //     </NavLink>
+    //   ))}
+    // </div>
   );
 }
 

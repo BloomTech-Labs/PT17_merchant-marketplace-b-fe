@@ -1,52 +1,64 @@
-.outerContainer{
-    margin-top: 7rem;
+.outerContainer {
+  margin-top: 7rem;
 }
-.contents{
-    margin: 0 auto;
-    max-width: 700px;
+.contents {
+  margin: 0 auto;
+  max-width: 700px;
 }
-.formContainer{
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.confButton{
-    margin: 0 auto;
+.formContainer {
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.popContent{
-    display: flex;
-    flex-flow: column;
+.confButton {
+  margin: 0 auto;
 }
 
-.displayedNone{
-    display: none;
+.popContent {
+  display: flex;
+  flex-flow: column;
+}
+
+.displayedNone {
+  display: none;
 }
 .spec-inputs {
-    margin: 10%
+  margin: 10%;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
-.supplement-detail{
-    color: lightgray;
+.supplement-detail {
+  color: lightgray;
 }
-.choosen-categories{
-    display: flex;
-    max-width: 50%;
-    justify-content: space-between;
+.choosen-categories {
+  display: flex;
+  max-width: 50%;
+  justify-content: space-between;
 }
-.delete{
-    cursor: pointer;
+.delete {
+  cursor: pointer;
 }
-.category-warning{
-    color:red;
+.category-warning {
+  color: red;
 }
-.modal-button{
-    margin-top: 5rem;
+.modal-button {
+  margin-top: 5rem;
 }
-.newImg{
-    margin: 1rem;
+.newImg {
+  margin: 1rem;
+}
+.inv-display-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.big-inv-container {
+  position: relative;
+  background: #f0eac9;
+  width: 300px;
+  margin: 30px auto;
+  box-shadow: 0px 2px 38px rgba(0, 0, 0, 0.2);
+  padding: 3%;
 }
