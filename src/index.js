@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
@@ -9,6 +9,8 @@ import {
 
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 import 'antd/dist/antd.less';
+import axios from 'axios';
+import { ItemContext } from './state/contexts/ItemContext';
 
 import { NotFoundPage } from './components/pages/NotFound';
 
@@ -55,50 +57,67 @@ function App() {
     history.push('/login');
   };
 
+  // const { authState, authService } = useOktaAuth();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('https://merchant-marketplace-b-api.herokuapp.com/item', {
+        // headers: headers,
+      })
+      .then(res => {
+        setData(res.data);
+      })
+      .catch(err => err);
+  }, []);
+
   return (
     <Security {...config} onAuthRequired={authHandler}>
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
         {/* any of the routes you need secured should be registered as SecureRoutes */}
-        <Route exact path="/" component={Landing} />
-        <SecureRoute exact path="/myprofile" component={SellerProfile} />
-        <SecureRoute
-          exact
-          path="/myprofile/inventory/published-inventory"
-          component={PublishedInventory}
-        />
-        <SecureRoute
-          exact
-          path="/myprofile/inventory/drafts"
-          component={Drafts}
-        />
-        <SecureRoute
-          exact
-          path="/myprofile/inventory"
-          component={CurrentInventory}
-        />
-        <SecureRoute
-          exact
-          path="/myprofile/inventory/additem"
-          component={Inventory}
-        />
+        <ItemContext.Provider value={{ data, setData }}>
+          <Route exact path="/" component={Landing} />
 
-        <SecureRoute exact path="/myprofile/myinfo" component={MyInfo} />
-        <SecureRoute exact path="/myprofile/editinfo" component={EditInfo} />
-        <SecureRoute
-          exact
-          path="/myprofile/inventory/productpage/:id"
-          render={routeProps => {
-            return <ProductPage match={routeProps.match} />;
-          }}
-        />
-        <SecureRoute
-          exact
-          path="/test_image_upload"
-          component={TestItemImageUpload}
-        />
-        <Route component={NotFoundPage} />
+          <SecureRoute exact path="/myprofile" component={SellerProfile} />
+          <SecureRoute
+            exact
+            path="/myprofile/inventory/published-inventory"
+            component={PublishedInventory}
+          />
+          <SecureRoute
+            exact
+            path="/myprofile/inventory/drafts"
+            component={Drafts}
+          />
+          <SecureRoute
+            exact
+            path="/myprofile/inventory"
+            component={CurrentInventory}
+          />
+          <SecureRoute
+            exact
+            path="/myprofile/inventory/additem"
+            component={Inventory}
+          />
+
+          <SecureRoute exact path="/myprofile/myinfo" component={MyInfo} />
+          <SecureRoute exact path="/myprofile/editinfo" component={EditInfo} />
+          <SecureRoute
+            exact
+            path="/myprofile/inventory/productpage/:id"
+            render={routeProps => {
+              return <ProductPage match={routeProps.match} />;
+            }}
+          />
+          <SecureRoute
+            exact
+            path="/test_image_upload"
+            component={TestItemImageUpload}
+          />
+          <Route component={NotFoundPage} />
+        </ItemContext.Provider>
       </Switch>
     </Security>
   );

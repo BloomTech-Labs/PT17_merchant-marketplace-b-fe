@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { ItemContext } from '../../../../state/contexts/ItemContext';
 
 const InventoryDisplay = props => {
-  // need to get props from somewhere
+  const { data, setData } = useContext(ItemContext);
+
   return (
     <>
-      {props.published ? (
-        <div className="big-inv-container">
-          <h2>{props.item_name}</h2>
-          <p>{props.description}</p>
-          <p>${props.price_in_cents}</p>
-          <p>{props.quantity_available} available</p>
-        </div>
-      ) : (
-        <h1>You currently have no published inventory</h1>
-      )}
+      <h2>Published Items:</h2>
+      {data.map(item => (
+        <h3>{item.item_name}</h3>
+      ))}
     </>
   );
 };

@@ -14,48 +14,18 @@ import { Carousel } from 'antd';
 const Landing = () => {
   // setting product state
   const [products, setProducts] = useState([]);
-  //
-  //
-  // trying to use placeholder data from api directory in this repo
 
-  // adding api call here for now to pass to child component (products) as props
-  useEffect(() => {
-    axios.get('https://rickandmortyapi.com/api/character').then(response => {
-      // console.log(response.data.results);
-      setProducts(response.data.results);
-      // console.log(products);
-    });
-  }, []);
-  //
-  //
-
-  //
-  //
-  // trying to use helper function exported from api/index
-  // useEffect(() => {
-  //   getExampleData().then(products => {
-  //     setProducts(products);
-  //   });
-  //   console.log(products);
-  // }, [getExampleData]);
-  // useEffect(() => {
-  //   setProducts(getExampleData());
-  //   console.log(products);
-  // }, []);
-
-  // trying to isolate 4 elements for prop array
+  // isolating 4 elements for prop array
   // instantiate empty array
   let newProducts = [];
   // loop through response data array to isolate just the images
   for (let i = 0; i < products.length; i++) {
     newProducts.push(products[i].image);
-    // console.log(newProducts);
   }
   // create a final array of only 4 images to pass down
   let prodCarousel = newProducts.slice(0, 4);
-  // console.log(prodCarousel);
+
   return (
-    // adding jsx fragment
     <>
       <div>
         <MainNavBar />

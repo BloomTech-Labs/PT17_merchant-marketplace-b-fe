@@ -8,12 +8,11 @@ import CustomerSection from './customerSection';
 
 function Dashboard() {
   //
-  // all of my state and auth setup
+  // state and auth setup
   const { authState, authService } = useOktaAuth();
   const [data, setData] = useState([]);
 
   const getAuthHeader = authState => {
-    console.log(authState);
     if (authState.isAuthenticated) {
       return { Authorization: `Bearer ${authState.idToken}` };
     } else {
@@ -22,7 +21,7 @@ function Dashboard() {
     localStorage.setItem('token', `${authState.idToken}`);
   };
   const token = localStorage.getItem('token');
-  // console.log(token);
+
   const headers = {
     Authorization: `Bearer ${token}`,
   };
@@ -32,14 +31,11 @@ function Dashboard() {
         headers: headers,
       })
       .then(res => {
-        console.log('dashboard index', res);
         setData(res.data);
       })
       .catch(err => err);
   }, []);
-  const getData = () => {
-    console.log(data);
-  };
+
   return (
     <div className="dashboard">
       <div className="dashItem">

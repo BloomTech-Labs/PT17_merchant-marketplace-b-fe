@@ -2,7 +2,6 @@ import React from 'react';
 import {
   sleep,
   getExampleData,
-  getData,
   getProfileData,
   putData,
   getProfileIdData,

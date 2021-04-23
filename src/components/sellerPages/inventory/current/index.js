@@ -27,18 +27,17 @@ function CurrentInventory({
   const [searchData, setSearchData] = useState({});
   const { authState } = useOktaAuth();
 
-  useEffect(() => {
-    fetchProducts(authState);
-    fetchCategories(authState);
-    fetchTags(authState);
-  }, []);
+  // useEffect(() => {
+  //   fetchProducts(authState);
+  //   fetchCategories(authState);
+  //   fetchTags(authState);
+  // }, []);
 
   const displayedData = useSearch(inventory, 'item_name', searchData);
 
   const [data, setData] = useState([]);
 
   const getAuthHeader = authState => {
-    console.log(authState);
     if (authState.isAuthenticated) {
       return { Authorization: `Bearer ${authState.idToken}` };
     } else {

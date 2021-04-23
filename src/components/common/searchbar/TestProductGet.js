@@ -20,7 +20,6 @@ const TestProductGet = () => {
   const [data, setData] = useState([]);
 
   const getAuthHeader = authState => {
-    // console.log(authState);
     if (authState.isAuthenticated) {
       return { Authorization: `Bearer ${authState.idToken}` };
     } else {
@@ -29,13 +28,12 @@ const TestProductGet = () => {
     localStorage.setItem('token', `${authState.idToken}`);
   };
   const token = localStorage.getItem('token');
-  // console.log(token);
+
   const headers = {
     Authorization: `Bearer ${token}`,
   };
 
   const handleSubmit = event => {
-    console.log('submit click');
     const headers = {
       Authorization: `Bearer ${token}`,
     };
@@ -46,7 +44,6 @@ const TestProductGet = () => {
         { headers: headers }
       )
       .then(response => {
-        console.log(response);
         setNewItem(response.data);
         setFormState({
           item_name: '',
@@ -56,7 +53,6 @@ const TestProductGet = () => {
           published: '',
           id: '',
         });
-        console.log(response);
       })
       .catch(err => {
         console.log(err.response);
@@ -81,19 +77,14 @@ const TestProductGet = () => {
         headers: headers,
       })
       .then(res => {
-        console.log(res);
         setData(res.data);
       })
       .catch(err => err);
   }, []);
-  const getData = () => {
-    console.log(data);
-  };
 
   return (
     <>
       Testing product get request
-      <button onClick={() => getData()}>Get Data</button>
       <div className="myProductContents">
         <h1>Update Product</h1>
         <form onSubmit={handleSubmit}>
