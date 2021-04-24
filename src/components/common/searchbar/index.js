@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Input, Button, Select } from 'antd';
 import { Link } from 'react-router-dom';
 import './searchbarStyles.css';
-import TestProductGet from './TestProductGet';
 
 function SearchBar({ searchVisible, setData }) {
   const [inView, setInView] = useState('nope');
