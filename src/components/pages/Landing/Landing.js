@@ -55,17 +55,17 @@ const Landing = () => {
         <div className="top-rated">
           <div className="merch-img">
             {' '}
-            <img src={sculptor} />
+            <img className="top-merchant" src={sculptor} />
             <p className="merch-name">SkulptD</p>
             <p className="merch-city">San Francisco, CA</p>
           </div>
           <div className="merch-img">
-            <img src={trinkets} />
+            <img className="top-merchant" src={trinkets} />
             <p className="merch-name">TrinketsNMore</p>
             <p className="merch-city">Bennington, VT</p>
           </div>
           <div className="merch-img">
-            <img src={vintage} />
+            <img className="top-merchant" src={vintage} />
             <p className="merch-name">Vinatge Vinyl</p>
             <p className="merch-city">Austin, TX</p>
           </div>
