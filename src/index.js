@@ -116,7 +116,7 @@ function App() {
             path="/test_image_upload"
             component={TestItemImageUpload}
           />
-          <Route component={NotFoundPage} />
+          {/* <Route component={NotFoundPage} /> */}
         </ItemContext.Provider>
       </Switch>
     </Security>

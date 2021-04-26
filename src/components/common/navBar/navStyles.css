@@ -1,6 +1,7 @@
 .nav-container {
   /* background-color: rebeccapurple; */
-  background-color: #28527a;
+  background-color: #8ac4d0;
+  /* #28527a; */
   position: fixed;
   width: 100%;
   top: 0;
@@ -12,23 +13,11 @@
   align-items: center;
   width: 100%;
 }
-
-.logo {
-  width: 140px;
-  height: 50px;
-  background-color: white;
-  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-  margin-left: 10%;
-  padding-left: 40px;
-  font-weight: 400;
-  color: black;
-  font-size: smaller;
+.nav-bar {
+  background-color: #8ac4d0;
+  border-radius: 5px;
 }
 
-.logo > span {
-  /* color: rebeccapurple; */
-  color: #28527a;
-}
 .nav > a {
   color: white;
   margin-left: 15px;
@@ -45,4 +34,29 @@
 .prod-desc {
   font-size: 1.6rem;
   color: white;
+}
+#Mermar-span {
+  color: white;
+  padding: 0 15px;
+}
+
+.header {
+  font-family: Libre Baskerville, serif;
+  font-size: 25px;
+  padding: 3.5px;
+}
+
+#vase-img {
+  height: 65px;
+}
+
+button {
+  color: white;
+  background-color: #f4d160;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 1.5px solid white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  letter-spacing: 1px;
 }
